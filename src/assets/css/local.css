@@ -44,8 +44,8 @@
   #sbs .cs-picture1 {
     top: 0;
     left: 0;
-    height: 36.3125em;
-    width: 32.625em;
+    height: 21.375em;
+    width: 30.0625em;
   }
   #sbs .cs-picture2 {
     bottom: 0;
@@ -53,8 +53,8 @@
     /* 6px - 12px */
     border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
     background-color: #fff;
-    height: 25em;
-    width: 25.875em;
+    height: 21.375em;
+    width: 32.8125em;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
   }
   #sbs .cs-right {

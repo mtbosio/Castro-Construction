@@ -2,6 +2,7 @@
 const pluginEleventyNavigation = require("@11ty/eleventy-navigation");
 const pluginMinifier = require("@sherby/eleventy-plugin-files-minifier");
 const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
+require('dotenv').config();
 
 // Configs
 const configCss = require("./src/config/css");
@@ -118,7 +119,12 @@ module.exports = function (eleventyConfig) {
     /**=====================================================================
                               END SERVER SETTINGS
     =======================================================================*/
-
+    eleventyConfig.addGlobalData("emailjs", {
+        userId: process.env.EMAILJS_USER_ID,
+        serviceId: process.env.EMAILJS_SERVICE_ID,
+        templateId: process.env.EMAILJS_TEMPLATE_ID
+      });
+      
     return {
         dir: {
             input: "src",

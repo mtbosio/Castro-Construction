@@ -1,0 +1,140 @@
+---
+title: 'Were Hiring! | Castro Construction'
+description: 'Page to contact to get hired.'
+preloadImg: '/assets/images/cabinets2.jpg'
+permalink: 'hiring/'
+eleventyNavigation:
+    key: We're Hiring!
+    order: 600
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            emailjs.init("{{ emailjs.userId }}"); // Initialize EmailJS with the user ID
+        });
+    </script>
+    <link rel="stylesheet" href="/assets/css/quote.css">
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                    LANDING                   -->
+    <!-- ============================================ -->
+
+    <section id="int-hero">
+        <h1 id="home-h">Looking for a job?</h1>
+        <picture>
+            <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">
+            <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">
+            <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="kitchen cabinets" loading="eager" width="2500" height="1667">
+        </picture>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                Contact Form                  -->
+    <!-- ============================================ -->
+
+    <section id="cs-contact">
+        <div class="cs-container">
+            <form id="cs-form" name="Contact Form" method="post" onsubmit="sendEmail(event)">
+                <div class="cs-content">
+                    <span class="cs-topper">Contact</span>
+                    <h2 class="cs-title">Join Our Team</h2>
+                    <p class="cs-text">
+                        Castro Construction is always hiring experienced apprentice and journeymen carpenters. 
+                    </p>
+                </div>
+                <label>
+                    Name
+                    <input required type="text" id="name" name="name" placeholder="Please type your full name">
+                </label>
+                <label>
+                    Email
+                    <input required type="text" id="email" name="email" placeholder="Enter email address">
+                </label>
+                <label>
+                    Subject
+                    <input required type="text" id="subject" name="subject" placeholder="Ex: Carpentry job">
+                </label>
+                <label>
+                    Phone
+                    <input type="text" id="phone" name="phone" placeholder="Enter phone number">
+                </label>
+                <label class="cs-label-message">
+                    Carpentry Experience
+                    <textarea required type="message" id="experience" name="experience" placeholder="Enter your experience working as a carpenter and any carpentry education you may have. Feel free to include any current certifications."></textarea>
+                </label>
+                <label class="cs-label-message">
+                    Message
+                    <textarea required name="Message" id="message" placeholder="Feel free to write a message to the owner of Castro Construction."></textarea>
+                </label>
+                <button class="cs-button-solid" type="submit">Submit</button>
+            </form>
+            <div class="cs-right-section">
+                <!--Email-->
+                <span class="cs-header">Email</span>
+                <a class="cs-link" href="mailto:{{client.email}}">{{client.email}}</a>
+                <!--Phone-->
+                <span class="cs-header">Phone</span>
+                <a class="cs-link" href="tel:{{client.phoneForTel}}">{{client.phoneFormatted}}</a>
+                <!--Address-->
+                <span class="cs-header">Address</span>
+                <a class="cs-link" href="{{client.address.mapLink}}">
+                    {{client.address.lineOne}}, 
+                    <br/>
+                    <span class="cs-block">
+                        {{client.address.city}}
+                        {{client.address.state}}
+                        {{client.address.zip}}
+                    </span>
+                </a>
+
+                <!-- Background Image-->
+                <picture class="cs-bg-picture">
+                    <source media="(min-width: 601px)" srcset="/assets/images/contact-image.jpg">
+                    <img aria-hidden="true" decoding="async" src="/assets/images/contact-image.jpg" alt="building" loading="lazy" width="2500" height="1667">
+                </picture>
+
+            </div>
+        </div>
+    </section>
+    <script>
+    function sendEmail(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const phone = document.getElementById('phone').value;
+        const experience = document.getElementById('experience').value;
+        const message = document.getElementById('message').value;
+
+        // Prepare email parameters
+        const templateParams = {
+            name: name,
+            email: email,
+            subject: subject,
+            phone: phone,
+            experience: experience,
+            message: message
+        };
+
+        // Send email using EmailJS
+        emailjs.send('{{ emailjs.serviceId }}', '{{ emailjs.templateId }}', templateParams)
+            .then(function(response) {
+                alert('Thank you for contacting us! We will get back to you soon.');
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                alert('There was an error sending your message. Please try again later.');
+                console.log('FAILED...', error);
+            });
+        }
+    </script>
+
+{% endblock %}

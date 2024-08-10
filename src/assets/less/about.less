@@ -142,6 +142,36 @@
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
     #sbs {
+        .cs-management-container {
+            display: flex;
+            flex-direction: column;
+        
+            .card {
+                display: flex;
+                flex-direction: column;
+                border-radius: (5/16rem);
+                margin: auto;
+                margin-bottom: (100/16rem);
+                background: #fff;
+                max-width: (1300/16rem);
+                width: 100%;
+                padding: (64/16rem) (30/16rem) (18/16rem) (30/16rem);
+                box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+
+                .profile-picture {
+                    overflow: hidden;
+                    border-radius: 2%;
+                    margin-bottom: (16/16rem);
+                    margin-left: 0;
+                    height: (206/16rem);
+                    width: (247/16rem);
+                    img {
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+        
         .cs-container {
             flex-flow: row;
             justify-content: space-between;

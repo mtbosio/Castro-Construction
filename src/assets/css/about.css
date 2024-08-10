@@ -122,6 +122,33 @@
 }
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
+  #sbs .cs-management-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #sbs .cs-management-container .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.3125rem;
+    margin: auto;
+    margin-bottom: 6.25rem;
+    background: #fff;
+    max-width: 81.25rem;
+    width: 100%;
+    padding: 4rem 1.875rem 1.125rem 1.875rem;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+  }
+  #sbs .cs-management-container .card .profile-picture {
+    overflow: hidden;
+    border-radius: 2%;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    height: 12.875rem;
+    width: 15.4375rem;
+  }
+  #sbs .cs-management-container .card .profile-picture img {
+    object-fit: cover;
+  }
   #sbs .cs-container {
     flex-flow: row;
     justify-content: space-between;
